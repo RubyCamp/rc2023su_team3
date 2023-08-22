@@ -50,22 +50,22 @@ class EV3Controller
   end
 
   def color_recognition
-    color = @brick.get_sensor(COLOR_SENSOR, 2)  # 读取颜色传感器值
+    color = @brick.get_sensor(COLOR_SENSOR, 2)  # カラーセンサ値の読み取り
     case color
     when 2
-      puts "Color:青 - Cannot move forward"
+      puts "Color:青 - 青に移動できません"
       return false
     when 5
-      puts "Color:赤 - Cannot move forward"
+      puts "Color:赤 - 赤ゾーンに入り、ゲームオーバー"
       return false
     when 1
-      puts "Color:黒 - Can move forward"
+      puts "Color:黒 - 黒に移動可能"
       return true
     when 6
-      puts "Color:白 - Can move forward"
+      puts "Color:白 - 白に移動可能"
       return true
     when 3
-      puts "Color:緑 - Can move forward"
+      puts "Color:緑 - 緑ゾーンに入り、ポイントを獲得"
       return true
     else
       puts "Color: #{color} - Unknown color"
