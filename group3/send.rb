@@ -1,7 +1,7 @@
 require_relative 'ruby-ev3/lib/ev3'
 require_relative 'communicator'
 
-#17用設定
+#GROUP3用設定
 =begin
 LEFT_MOTOR = "B"
 RIGHT_MOTOR = "C"
@@ -11,11 +11,21 @@ PORT = "COM4"
 =end
 
 #以下GROUP3_2 用設定
+=begin
 LEFT_MOTOR = "B"
 RIGHT_MOTOR = "C"
 COLOR_SENSOR = "3"
 DISTANCE_SENSOR = "2"
 PORT = "COM3"
+=end
+
+#RUBYCAMP16用
+LEFT_MOTOR = "B"
+RIGHT_MOTOR = "C"
+COLOR_SENSOR = "3"
+DISTANCE_SENSOR = "2"
+PORT = "COM4"
+
 MOTOR_SPEED = 50
 
 
@@ -29,6 +39,7 @@ motors = [LEFT_MOTOR, RIGHT_MOTOR]
 
 #-------------------------------------------
 
+#例
 val=10
 
 begin
