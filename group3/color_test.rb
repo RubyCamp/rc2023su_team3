@@ -1,10 +1,18 @@
 require_relative 'ruby-ev3/lib/ev3'
 
-LEFT_MOTOR = "C"
-RIGHT_MOTOR = "B"
+LEFT_MOTOR = "B"
+RIGHT_MOTOR = "C"
 COLOR_SENSOR = "3"
-DISTANCE_SENSOR = "2"
+DISTANCE_SENSOR = "4"
 PORT = "COM4"
+
+
+#以下GROUP3_2 用設定
+#LEFT_MOTOR = "C"
+#RIGHT_MOTOR = "B"
+#COLOR_SENSOR = "3"
+#DISTANCE_SENSOR = "2"
+#PORT = "COM4"
 MOTOR_SPEED = 50
 
 
@@ -28,6 +36,8 @@ while cnt < 100
   sleep 1
   cnt += 1
 end
+
+brick.play_tone(100,1000,1000)
 
 puts "closing..."
 brick.stop(true, *motors)
