@@ -1,7 +1,7 @@
 require_relative 'ruby-ev3/lib/ev3'
 require_relative 'communicator'
 
-#17用設定
+#GROUP3用設定
 =begin
 LEFT_MOTOR = "B"
 RIGHT_MOTOR = "C"
@@ -29,6 +29,7 @@ motors = [LEFT_MOTOR, RIGHT_MOTOR]
 
 #-------------------------------------------
 
+#例
 val=10
 
 begin
