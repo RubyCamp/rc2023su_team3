@@ -1,18 +1,19 @@
 require_relative 'ruby-ev3/lib/ev3'
 
+=begin
 LEFT_MOTOR = "B"
 RIGHT_MOTOR = "C"
 COLOR_SENSOR = "3"
 DISTANCE_SENSOR = "4"
 PORT = "COM4"
-
+=end
 
 #以下GROUP3_2 用設定
-#LEFT_MOTOR = "C"
-#RIGHT_MOTOR = "B"
-#COLOR_SENSOR = "3"
-#DISTANCE_SENSOR = "2"
-#PORT = "COM4"
+LEFT_MOTOR = "B"
+RIGHT_MOTOR = "C"
+COLOR_SENSOR = "3"
+DISTANCE_SENSOR = "2"
+PORT = "COM4"
 MOTOR_SPEED = 50
 
 
@@ -26,6 +27,8 @@ brick.reset(*motors)   # モーターの回転方向を初期化
 
 # 0.2秒間だけ速度50にて前進
 brick.start(MOTOR_SPEED, *motors)
+puts "start"
+
 sleep 0.2
 brick.stop(true, *motors)
 
