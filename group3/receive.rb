@@ -1,24 +1,24 @@
 require_relative 'ruby-ev3/lib/ev3'
 require_relative 'communicator'
 
-LEFT_MOTOR = "C"
-RIGHT_MOTOR = "B"
+LEFT_MOTOR = "B"
+RIGHT_MOTOR = "C"
 COLOR_SENSOR = "3"
-DISTANCE_SENSOR = "2"
+DISTANCE_SENSOR = "4"
 PORT = "COM6"
 MOTOR_SPEED = 50
 
 
 puts "starting..."
-brick = EV3::Brick.new(EV3::Connections::Bluetooth.new(PORT))
-brick.connect
+#brick = EV3::Brick.new(EV3::Connections::Bluetooth.new(PORT))
+#brick.connect
 puts "connected..."
 motors = [LEFT_MOTOR, RIGHT_MOTOR]
 
   begin
     threads = []
     receiver = Communicator::Receiver.new
-  
+
     threads << Thread.start do
       signals = receiver.receive
       message = receiver.get_message(signals)
