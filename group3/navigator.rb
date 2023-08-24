@@ -26,6 +26,8 @@ class Navigator < Character
         @ev3_controller.move_forward(0.65)
         @ev3_controller.move_leftward(0.4) 
         @ev3_controller.move_forward(0.65)
+        @ev3_controller.move_leftward(0.4) 
+        @ev3_controller.move_forward(0.65)
       # end
     end
 
