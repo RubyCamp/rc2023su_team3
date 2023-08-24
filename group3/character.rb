@@ -1,10 +1,12 @@
 class Character
-  def initialize(port, x, y, img)
+  def initialize(port, x, y, img, direction)
     @ev3_controller = EV3Controller.new(port)
     @x = x
     @y = y
     @img = img
     @font = Font.new(24)
+    @direction = direction
+    @cnt = 0
   end
 
   def update(map)
@@ -22,8 +24,8 @@ class Character
 
   # 次のフレームで位置すべきマップ上の座標が進入可能であれば移動し、そうでなければ現在位置に留まる
   def update_new_position(map, new_x, new_y)
-    if map.is_available?(new_x, new_y)
-      @x, @y = new_x, new_y
-    end
+    # if map.is_available?(new_x, new_y)
+    #   @x, @y = new_x, new_y
+    # end
   end
 end

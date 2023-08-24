@@ -12,9 +12,10 @@ Window.height = 600
 
 map = Map.new("map_data/map.dat")
 
+
 # ※ 座標系をマップ座標系に変更
 characters = []
-characters << Navigator.new("COM6", 1, 1, Image.load("images/navigator.png"))
+characters << Navigator.new("COM6", 3 , 2 , Image.load("images/up.png"), 1)
 
 Window.loop do
   break if Input.key_push?(K_ESCAPE)
@@ -27,6 +28,8 @@ Window.loop do
     char.draw
   end
 end
+
+
 
 characters.each do |char|
   char.close
