@@ -26,14 +26,22 @@ module Communicator
     DISTANCE_SENSOR = "1"
     PORT = "COM3"
 
-    def initialize
-      @brick = EV3::Brick.new(EV3::Connections::Bluetooth.new(PORT))
-      @brick.connect
+    def initialize(brick=nil)
+      if brick
+        @brick=brick
+      else
+        @brick = EV3::Brick.new(EV3::Connections::Bluetooth.new(PORT))
+        @brick.connect
+      end
     end
 
     def send(message)
+      puts UNIT
       @brick.get_sensor(DISTANCE_SENSOR, 2)
+      puts "ok"
       sleep UNIT * 2
+      puts "ok"
+      
       chars = message.chars
       signals = chars.map{|char| MAPPING[char] }
       signals.each.with_index do |signal, i|

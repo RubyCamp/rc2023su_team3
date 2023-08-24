@@ -11,27 +11,25 @@ PORT = "COM4"
 =end
 
 #以下GROUP3_2 用設定
-=begin
 LEFT_MOTOR = "B"
 RIGHT_MOTOR = "C"
-COLOR_SENSOR = "3"
-DISTANCE_SENSOR = "2"
-PORT = "COM3"
-=end
+COLOR_SENSOR = "2"
+DISTANCE_SENSOR = "4"
+PORT = "COM4"
 
 #RUBYCAMP16用
-LEFT_MOTOR = "B"
-RIGHT_MOTOR = "C"
-COLOR_SENSOR = "3"
-DISTANCE_SENSOR = "2"
-PORT = "COM4"
+#LEFT_MOTOR = "B"
+#RIGHT_MOTOR = "C"
+#COLOR_SENSOR = "2"
+#DISTANCE_SENSOR = "4"
+#PORT = "COM4"
 
 MOTOR_SPEED = 50
 
 
 puts "starting..."
-#brick = EV3::Brick.new(EV3::Connections::Bluetooth.new(PORT))
-#brick.connect
+brick = EV3::Brick.new(EV3::Connections::Bluetooth.new(PORT))
+brick.connect
 #brick.clear_all
 #sleep 1.0
 puts "connected..."
@@ -45,7 +43,7 @@ val=10
 begin
   threads = []
  
-  sender = Communicator::Sender.new
+  sender = Communicator::Sender.new(brick)
 
   threads << Thread.start do
     message = val.to_s(16)
