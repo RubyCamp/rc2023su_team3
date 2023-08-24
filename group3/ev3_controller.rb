@@ -4,11 +4,11 @@ class EV3Controller
   DISTANCE_SENSOR = "4"
   LEFT_MOTOR = "C"
   RIGHT_MOTOR = "B"
-  MOTOR_SPEED = 50
+  MOTOR_SPEED = 20
 
   attr_reader :last_color, :last_distance
 
-  def initialize(port = "COM6")
+  def initialize(port = "COM4")
     @motors = [LEFT_MOTOR, RIGHT_MOTOR]
     @brick = EV3::Brick.new(EV3::Connections::Bluetooth.new(port))
     @brick.connect
@@ -65,37 +65,37 @@ class EV3Controller
   end
 
 
-  # def update_sensor_value
-  #   @wait_cnt += 1
-  #   return unless @wait_cnt % 30 == 0
-  #   @last_color = @brick.get_sensor(COLOR_SENSOR, 2)
-  #   @last_distance = @brick.get_sensor(DISTANCE_SENSOR, 0)
-  # end
+  def update_sensor_value
+    @wait_cnt += 1
+    return unless @wait_cnt % 30 == 0
+    @last_color = @brick.get_sensor(COLOR_SENSOR, 2)
+    @last_distance = @brick.get_sensor(DISTANCE_SENSOR, 0)
+  end
 
-  # def color_recognition
-  #   color = @brick.get_sensor(COLOR_SENSOR, 2) # カラーセンサ値の読み取り
-  #   p (color) 
-  #   case color
-  #   when 2
-  #     puts "Color:青 - 青に移動できません"
-  #     return false
-  #   when 5
-  #     puts "Color:赤 - 赤ゾーンに入り、ゲームオーバー"
-  #     return false
-  #   when 1
-  #     puts "Color:黒 - 黒に移動可能"
-  #     return true
-  #   when 6
-  #     puts "Color:白 - 白に移動可能"
-  #     return true
-  #   when 3
-  #     puts "Color:緑 - 緑ゾーンに入り、ポイントを獲得"
-  #     return true
-  #   else
-  #     puts "Color: #{color} - Unknown color"
-  #     return false
-  #   end
-  # end
+  def color_recognition
+    color = @brick.get_sensor(COLOR_SENSOR, 2) # カラーセンサ値の読み取り
+    p (color) 
+    case color
+    when 2
+      puts "Color:青 - 青に移動できません"
+      return false
+    when 5
+      puts "Color:赤 - 赤ゾーンに入り、ゲームオーバー"
+      return false
+    when 1
+      puts "Color:黒 - 黒に移動可能"
+      return true
+    when 6
+      puts "Color:白 - 白に移動可能"
+      return true
+    when 3
+      puts "Color:緑 - 緑ゾーンに入り、ポイントを獲得"
+      return true
+    else
+      puts "Color: #{color} - Unknown color"
+      return false
+    end
+  end
 
   def close
     @brick.stop(true, *@motors)

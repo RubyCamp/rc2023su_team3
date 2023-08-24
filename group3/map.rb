@@ -8,11 +8,16 @@ class Map
         @map_data << line.chomp.split(/\s*,\s*/)
       end
     end
-    @floor_img = Image.load("images/white.png")
-    @block_img = Image.load("images/block.png")
+    @white_img = Image.load("images/white.png")
     @blue_img = Image.load("images/blue.png")
+    @green_img = Image.load("images/green.png")
+    @red_img = Image.load("images/red.png")
+    
   end
   
+def update_color(x, y, color)
+ @map_data[y][x] = color.to_i
+end
 
   def update
     
@@ -20,12 +25,18 @@ class Map
 
   def draw
     @map_data.each_with_index do |line, my|
-      line.each_with_index do |chip_num, mx|
-        case chip_num.to_i
+      line.each_with_index do |color, mx|
+        case color.to_i
         when 6
-          Window.draw(mx * CHIP_SIZE + 32, my * CHIP_SIZE + 32, @floor_img)
+          Window.draw(mx * CHIP_SIZE, my * CHIP_SIZE, @white_img)
+        when 5
+          Window.draw(mx * CHIP_SIZE, my * CHIP_SIZE, @red_img)
+        when 3
+          Window.draw(mx * CHIP_SIZE, my * CHIP_SIZE, @green_img)
         when 2
-          Window.draw(mx * CHIP_SIZE + 32, my * CHIP_SIZE + 32, @blue_img)
+          Window.draw(mx * CHIP_SIZE, my * CHIP_SIZE, @blue_img)
+        when 1
+          Window.draw(mx * CHIP_SIZE, my * CHIP_SIZE, @white_img)
         end
       end
     end

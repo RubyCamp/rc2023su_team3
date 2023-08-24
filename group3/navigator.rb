@@ -13,23 +13,63 @@ class Navigator < Character
   def update(map)
     dx = 0
     dy = 0
+    map.update_color(@x, @y, @ev3_controller.last_color)
     
     if Input.key_push?(K_SPACE)
       # if @ev3_controller.color_recognition
         # ev3_move(1)
-        @ev3_controller.move_forward(1.2)
-        @ev3_controller.move_leftward(0.4) 
-        @ev3_controller.move_forward(1.2)
-        @ev3_controller.move_leftward(0.4) 
-        @ev3_controller.move_forward(0.65)
-        @ev3_controller.move_rightward2(0.4)
-        @ev3_controller.move_forward(0.65)
-        @ev3_controller.move_leftward(0.4) 
-        @ev3_controller.move_forward(0.65)
-        @ev3_controller.move_leftward(0.4) 
-        @ev3_controller.move_forward(0.65)
+
+        
+        #@ev3_controller.move_forward(1.5)
+        #sleep 1.0
+        #@ev3_controller.move_leftward(1.05) 
+        #sleep 2.0
+        #@ev3_controller.move_forward(1.2)
+        #@ev3_controller.move_leftward(0.4) 
+        #@ev3_controller.move_forward(1.2)
+        #@ev3_controller.move_leftward(0.4) 
+        #@ev3_controller.move_forward(0.65)
+        #@ev3_controller.move_rightward2(0.4)
+        #@ev3_controller.move_forward(0.65)
+        #@ev3_controller.move_leftward(0.4) 
+        #@ev3_controller.move_forward(0.65)
+        #@ev3_controller.move_leftward(0.4) 
+        #@ev3_controller.move_forward(0.65)
+        
+
+        #@ev3_controller.move_forward(1.5)
+        #@ev3_controller.move_forward(1.5)
+        #@ev3_controller.move_leftward(1.025) 
+        #@ev3_controller.move_forward(1.5)
+        #@ev3_controller.move_forward(1.5)
+        #@ev3_controller.move_leftward(1.025) 
+        #@ev3_controller.move_forward(1.5)
+        #@ev3_controller.move_rightward(1.025)
+        #@ev3_controller.move_forward(1.5)
+        #@ev3_controller.move_leftward(1.025) 
+        #@ev3_controller.move_forward(1.5)
+
+        #前進:1,左:2,右:3
+        route = [1,1,2,1,1,2,1,3,1,2,1]
+        route.each do |i|
+          case i
+          when 1 then
+            @ev3_controller.move_forward(1.5)
+
+          when 2 then 
+            @ev3_controller.move_leftward(1.025) 
+
+          when 3 then
+            @ev3_controller.move_rightward(1.025)
+
+          end
+        end
+
+
       # end
     end
+
+
 
     if Input.key_push?(K_RIGHT)
       # if @ev3_controller.color_recognition
@@ -44,9 +84,9 @@ class Navigator < Character
        @direction = 3
        when 3
        @direction = 0
-     end
+      end
      # end
-   end
+    end
       # end
  
 
